@@ -20,4 +20,12 @@ RSpec.describe StringCalculator do
   it "throws an exception for invalid input" do
     expect { StringCalculator.add("1,\n") }.to raise_error("invalid input")
   end
+
+  it "allows the add method to support different delimiters" do
+    expect(StringCalculator.add("//;\n1;2")).to eq(3)
+  end
+
+  it "throws an exception for negative numbers" do
+    expect { StringCalculator.add("1,-2") }.to raise_error("negative numbers not allowed")
+  end
 end
